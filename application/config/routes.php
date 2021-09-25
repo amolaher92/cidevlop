@@ -53,4 +53,4 @@ $route['default_controller'] = 'Cidevlop';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['home'] = "Cidevlop/index";
+$route['home'] = 'Cidevlop/index';

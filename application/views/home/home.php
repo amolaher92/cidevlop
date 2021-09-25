@@ -1,18 +1,16 @@
 <!--Section Start-->
-<section>
-	<div class="container">
-		<div class="row">
-			<h1 class="h1">Amol Aher</h1>
-			<div class="col-lg-4">
-				<p>First columnType</p>
-			</div>
-			<div class="col-lg-4">
-				<p>second columnType</p>
-			</div>
-			<div class="col-lg-4">
-				<p>Third columnType</p>
-			</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 bg-warning">
+			<h1 class="display-1">Amol Aher</h1>
+			<p>First columnType</p>
+		</div>
+		<div class="col-md-4 bg-success">
+			<p>second columnType</p>
+		</div>
+		<div class="col-md-4 bg-danger">
+			<p>Third columnType</p>
 		</div>
 	</div>
-</section>
+</div>
 <!--Section End-->

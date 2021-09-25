@@ -14,35 +14,39 @@
 	<title>CI Web Development</title>
 
 	<!-- Bootstrap v4.6 -->
-	<link rel="stylesheet" href="<?= base_url('assets/bootstrap/dist/css/bootstrap.min.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/bootstrap.min.css'); ?>">
 
 	<!-- FontAwesome -->
-	<link rel="stylesheet" href="<?= base_url('assets/fontawesome-free/css/all.min.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/all.min.css'); ?>">
 
 	<!-- Ionics Icons -->
-	<link rel="stylesheet" href="<?= base_url('assets/ionic-icon/css/ionicons.min.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/ionicons.min.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/ie7.css')?>">
+
+	<!-- jQuery UI	-->
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/jquery-ui.min.css')?>">
 
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="<?= base_url('assets/themify-icons/themify-icons.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/themify-icons.css'); ?>">
 
 	<!-- Data Tables -->
-	<link rel="stylesheet" href="<?= base_url('assets/DataTables/css/dataTables.dataTables.min.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/dataTables.dataTables.min.css'); ?>">
 
 	<!-- Bootstrap Tree view -->
 	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap-treeview.min.css'); ?>">
 
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="<?= base_url('assets/OwlCarousel/dist/assets/owl.carousel.min.css'); ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/OwlCarousel/dist/assets/owl.theme.default.min.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/owl.carousel.min.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/owl.theme.default.min.css'); ?>">
 
 	<!-- Yet Element -->
 	<link rel="stylesheet" href="<?= base_url('assets/css/yet-element.css'); ?>">
 
 	<!-- Reveal	-->
-	<link rel="stylesheet" href="<?= base_url('assets/jslib/reveal.js/dist/reveal.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/reveal.css'); ?>">
 
 	<!-- Pace Master Progressive loader -->
-	<link rel="stylesheet" href="<?= base_url('assets/pace-master/themes/blue/pace-theme-center-atom.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/pace-theme-center-atom.css'); ?>">
 
 	<!-- catchaAPI google -->
 	<script defer src='https://www.google.com/recaptcha/api.js'></script>
