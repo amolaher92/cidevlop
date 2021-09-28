@@ -34,6 +34,7 @@
 
 	<!-- Data Tables -->
 	<link rel="stylesheet" href="<?= base_url('assets/lib/css/dataTables.dataTables.min.css'); ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/lib/css/jquery.dataTables.css'); ?>">
 
 	<!-- Bootstrap Tree view -->
 	<link rel="stylesheet" href="<?= base_url('assets/css/bootstrap-treeview.min.css'); ?>">

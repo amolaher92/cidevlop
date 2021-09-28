@@ -21,6 +21,7 @@
 
 <!--Data Tables-->
 <script src="<?= base_url('assets/lib/js/dataTables.dataTables.min.js') ?>"></script>
+<script src="<?= base_url('assets/lib/js/jquery.dataTables.js') ?>"></script>
 
 <!--FontAwesome-->
 <script src="<?= base_url('assets/lib/js/all.min.js') ?>"></script>
@@ -31,6 +32,10 @@
 
 <!--Reveal-->
 <script src="<?= base_url('assets/lib/js/reveal.js') ?>"></script>
+
+<!--Custom JS-->
+<script src="<?= base_url('assets/js/main.js') ?>"></script>
+
 
 </body>
 </html>

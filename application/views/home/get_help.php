@@ -4,12 +4,14 @@
  * $records = $this->User_Model->getRecords();
  * 			$data = array();
  * 			$data['users'] = $records;
+ * pass $data as parameter to view
  */
 
 /**
  * Model
  * return $users = $this->db->get('users')->result();
  */
+//view
 foreach($users as $record): ?>
 	<tr>
 		<td scope="row"><?= $record->id ?></td>
@@ -22,6 +24,7 @@ foreach($users as $record): ?>
  * Model
  * return $users = $this->db->get('users')->result_array();
  */
+//view
 foreach($users as $record): ?>
 	<tr>
 		<td scope="row"><?= $record['id'] ?></td>

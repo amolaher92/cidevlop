@@ -55,3 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['home'] = 'Cidevlop/index';
 $route['home/signup'] = 'Cidevlop/signup';
+
+$route['home/users'] = 'Users/index';

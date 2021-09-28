@@ -18,12 +18,13 @@ if (!class_exists('User_Model')) {
 		public function getRecords()
 		{
 			return $users = $this->db->get('users')->result();
-//			$result = $query->result();
-//			foreach ($result as $row) {
-//				echo $row->id;
-//				echo $row->user_name;
-//				echo $row->user_email;
-//			}
+			/*$result = $query->result();
+			foreach ($result as $row) {
+				echo $row->id;
+				echo $row->user_name;
+				echo $row->user_email;
+			}*/
 		}
+
 	}
 }
