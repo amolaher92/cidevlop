@@ -3,7 +3,7 @@
 	<h1>Data get in Object</h1>
 	<div class="row mt-5">
 		<div class="col-md-6">
-			<table class="table table-striped table-bordered" id="myTable">
+			<table class="table table-striped table-bordered table-hover" id="myTable">
 				<thead>
 				<tr>
 					<th>#</th>
@@ -12,7 +12,13 @@
 				</tr>
 				</thead>
 				<tbody>
-				<?php foreach($users as $user) : ?>
+				<?php
+				/**
+				 * @description Get data in object form
+				 * @param object $users
+				 * @return object $user
+				 */
+				foreach($users as $user) : ?>
 				<tr>
 					<td><?= $user->id ?></td>
 					<td><?= $user->user_name ?></td>

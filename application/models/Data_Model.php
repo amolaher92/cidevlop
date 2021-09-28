@@ -20,6 +20,7 @@ if (!class_exists('Data_Model')) {
 		/**
 		 * @description standard query with multiple results
 		 * @result Object
+		 * @return array
 		 */
 		public function getResultObject()
 		{
@@ -32,6 +33,7 @@ if (!class_exists('Data_Model')) {
 		/**
 		 * @description standard query with multiple results
 		 * @result Array
+		 * @return array
 		 */
 		public function getResultArray()
 		{
@@ -42,4 +44,11 @@ if (!class_exists('Data_Model')) {
 		}
 	}
 
+	trait standardQuery
+	{
+		public function test()
+		{
+			echo hello;
+		}
+	}
 }
