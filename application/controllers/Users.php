@@ -16,7 +16,16 @@ if(!class_exists('Users'))
 			$data = array();
 			$data['users'] = $records;
 			$this->load->view('header/header');
-			$this->load->view('test/results',$data);
+			$this->load->view('test/results_object',$data);
+			$this->load->view('footer/footer');
+		}
+		public function arrayResult()
+		{
+			$records = $this->Data_Model->getResultArray();
+			$data = array();
+			$data['users'] = $records;
+			$this->load->view('header/header');
+			$this->load->view('test/result_array',$data);
 			$this->load->view('footer/footer');
 		}
 	}

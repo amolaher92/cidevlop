@@ -28,6 +28,18 @@ if (!class_exists('Data_Model')) {
 
 			//echo 'Total result :' . $query->num_rows();
 		}
+
+		/**
+		 * @description standard query with multiple results
+		 * @result Array
+		 */
+		public function getResultArray()
+		{
+			$query = $this->db->query("SELECT id,user_name,user_email FROM users");
+			return $query->result_array();
+
+			//echo 'Total result :' . $query->num_rows();
+		}
 	}
 
 }
