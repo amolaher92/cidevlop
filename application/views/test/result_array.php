@@ -15,8 +15,8 @@
 				<?php
 				/**
 				 * @description Get data in object form
-				 * @param array $users
-				 * @return array $user
+				 * @var array $users associative array
+				 * @return array $users
 				 */
 				foreach($users as $user) : ?>
 					<tr>
