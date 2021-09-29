@@ -34,5 +34,3 @@
 	</div>
 </div>
 <!--Section End-->
-<!--start section-->
-<!--end section-->
