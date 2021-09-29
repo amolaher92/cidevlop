@@ -2,6 +2,8 @@
 <div class="container">
 	<div class="row mt-5">
 		<div class="col-md-6">
+			<!--return meg if success or failure -->
+			<?= $this->session->flashdata('msg') ?? '' ?>
 			<form action="<?= base_url('home/signup'); ?>"
 				  method="post">
 				<div class="form-group">
