@@ -103,8 +103,9 @@ if (!class_exists('Users')) {
 				 * @param array field|label|rules
 				 * @return true|false
 				 */
-				$this->form_validation->set_rules('user_name', "User Name", 'required');
-				$this->form_validation->set_rules('user_email', 'User Email', 'required|valid_email');
+				$this->form_validation->set_rules('name', "Name", 'required');
+				$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+				$this->form_validation->set_rules('mobile', 'Mobile', 'required');
 
 				//set error message if validation_array false
 				$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
@@ -115,6 +116,7 @@ if (!class_exists('Users')) {
 					 * @description get user input array
 					 * @var array $application
 					 */
+					$application = array();
 					$application = $this->input->post();
 					/**
 					 * @description save input data to database

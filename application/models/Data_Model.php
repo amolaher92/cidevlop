@@ -42,7 +42,7 @@ if (!class_exists('Data_Model')) {
 			 * @param string $query
 			 * @retrun array
 			 */
-			$query = $this->db->query("SELECT id,user_name,user_email FROM users");
+			$query = $this->db->query("SELECT * FROM users");
 
 			//get result in object form
 			return $query->result();
@@ -64,7 +64,7 @@ if (!class_exists('Data_Model')) {
 			 * @param string $query
 			 * @retrun array
 			 */
-			$query = $this->db->query("SELECT id,user_name,user_email FROM users");
+			$query = $this->db->query("SELECT * FROM users");
 
 			//get result in associative array form
 			return $query->result_array();
@@ -86,7 +86,7 @@ if (!class_exists('Data_Model')) {
 			 * @param string $query
 			 * @retrun object
 			 */
-			$query = $this->db->query("SELECT user_name FROM users LIMIT 1");
+			$query = $this->db->query("SELECT name FROM users LIMIT 1");
 			return $query->row();
 		}
 
@@ -104,7 +104,7 @@ if (!class_exists('Data_Model')) {
 			 * @param string $query
 			 * @retrun object
 			 */
-			$query = $this->db->query("SELECT user_name FROM users LIMIT 1");
+			$query = $this->db->query("SELECT name FROM users LIMIT 1");
 			return $query->row_array();
 		}
 

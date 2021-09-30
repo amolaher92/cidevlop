@@ -10,6 +10,7 @@
 					<th>#</th>
 					<th>User Name</th>
 					<th>Email</th>
+					<th>Mobile</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -22,8 +23,9 @@
 				foreach ($querybuilds as $user) : ?>
 					<tr>
 						<td><?= $user['id'] ?></td>
-						<td><?= $user['user_name'] ?></td>
-						<td><?= $user['user_email'] ?></td>
+						<td><?= $user['name'] ?></td>
+						<td><?= $user['email'] ?></td>
+						<td><?= $user['mobile'] ?></td>
 					</tr>
 				<?php endforeach; ?>
 				</tbody>
