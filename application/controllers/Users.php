@@ -20,6 +20,7 @@ if (!class_exists('Users')) {
 			 * @return boolean true if model
 			 */
 			$this->load->model('Data_Model');
+			$this->load->library('session');
 		}
 
 		/**
@@ -95,7 +96,7 @@ if (!class_exists('Users')) {
 			 * @methods method
 			 * @return true|false
 			 */
-			if ($this->input->method === 'post') {
+			if ($this->input->method() === 'post') {
 				/**
 				 * @description set form validation rule
 				 * @class form_validation
@@ -131,10 +132,17 @@ if (!class_exists('Users')) {
 						 * @param array data|value
 						 * @return string
 						 */
-						$this->session->set_flashdata('msg', '<div class="alert alert-success alert-dismissible">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Successfully</strong> submitted your application.
-				</div>  ');
+						$Success = '<div 
+										class="alert alert-success alert-dismissible" 
+										role="alert">
+										<strong>Successfully Login</strong>
+										<button type="button" 
+												class="close" 
+												data-dismiss="alert" 
+												aria-label="Close">
+   									 	<span aria-hidden="true">&times;</span></button>
+									</div> ';
+						$this->session->set_flashdata('msg', $Success);
 
 						/**
 						 * @description redirect to application page
@@ -146,10 +154,15 @@ if (!class_exists('Users')) {
 					} else {
 
 						//failure
-						$this->session->set_flashdata('msg', '<div class="alert alert-danger alert-dismissible">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				<strong>Failed!</strong> to submting to your application please try again.
-				</div>  ');
+						$Danger = '<div class="alert alert-danger alert-dismissible" 
+										role="alert" >
+									<button type="button" 
+												class="close" 
+												data-dismiss="alert" 
+												aria-label="Close">
+   									 	<span aria-hidden="true">&times;</span></button>
+									<strong>Failed!</strong> to submting to your application please try again.</div>  ';
+						$this->session->set_flashdata('msg', $Danger);
 
 						//redirect
 						return redirect('home/signup');

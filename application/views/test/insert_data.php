@@ -2,10 +2,9 @@
 <div class="container">
 	<div class="row mt-5">
 		<div class="col-md-6">
-			<!--return meg if success or failure -->
-			<?= $this->session->flashdata('msg') ?? '' ?>
-			<form action="<?= base_url('home/signup'); ?>"
-				  method="post">
+			<!--return msg if success or failure -->
+			<?= $this->session->flashdata('msg') ?: '' ?>
+			<form method="post" action="<?= base_url('home/signup') ?>">
 				<div class="form-group">
 					<label for="user_name">User Name :</label>
 					<input type="text"
@@ -29,7 +28,6 @@
 					<small id="emailHelpId" class="form-text text-muted">example@domain.com</small>
 				</div>
 				<button type="submit"
-						name="submit"
 						class="btn btn-lg btn-primary">Submit</button>
 			</form>
 		</div>

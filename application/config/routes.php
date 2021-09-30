@@ -54,7 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['home'] = 'Cidevlop/index';
-$route['home/signup'] = 'Cidevlop/signup';
 
 $route['home/users'] = 'Users/index';
 $route['home/user'] = 'Users/arrayResult';
