@@ -35,7 +35,25 @@
 
 <!--Custom JS-->
 <script src="<?= base_url('assets/js/main.js') ?>"></script>
-
+<script>
+	$(document).ready(function () {
+		$('#myTable').DataTable({
+			"destroy": true,
+			"processing": true,
+			"dom": 'frtilp',
+			"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+			"scrollX": true,
+			"ajax": {
+				url: "<?= base_url('users/ajaxStduent');?>",
+				type: "POST"
+			},
+			'language': {
+				'emptyTable': 'No found',
+				'processing': '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+			}
+		})
+	});
+</script>
 
 </body>
 </html>

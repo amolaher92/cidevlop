@@ -19,7 +19,8 @@ if (!class_exists('Users')) {
 			 * @param string model name
 			 * @return boolean true if model
 			 */
-			$this->load->model('Data_Model');
+			$this->load->model('Data_Model', 'Data_Model');
+			$this->load->model('User_Model', 'User_Model');
 			$this->load->library('session');
 		}
 
@@ -174,6 +175,117 @@ if (!class_exists('Users')) {
 			$this->load->view('header/header');
 			$this->load->view('test/insert_data');
 			$this->load->view('footer/footer');
+		}
+
+		public function userTest()
+		{
+			if ($this->input->method() === 'post') {
+				$department = $this->input->post('did');
+				$class = $this->input->post('cid');
+				$service = $this->input->post('sid');
+
+				$data = $this->input->post();
+
+				if ($this->User_Model->setData($data) == TRUE) {
+					return redirect('home/test');
+				} else {
+					echo 'Insertion Error';
+					return redirect('home/test');
+				}
+			}
+
+			$dept = $this->User_Model->getDepartment();
+			$class = $this->User_Model->getClasses();
+			$service = $this->User_Model->getServices();
+			$results = $this->User_Model->getResults();
+			$data = array();
+
+			$data['departments'] = $dept;
+			$data['classes'] = $class;
+			$data['services'] = $service;
+			$data['applications'] = $results;
+
+
+			//load view
+			$this->load->view('header/header');
+			$this->load->view('test/test', $data);
+			$this->load->view('footer/footer');
+		}
+
+		public function getStudents()
+		{
+			$result = $this->User_Model->getDepartment();
+//			print_r($result);
+//			exit();
+			echo json_encode($result);
+		}
+
+		public function ajaxStduent()
+		{
+			$draw = intval($this->input->post("draw"));
+			$start = intval($this->input->post("start"));
+			$length = intval($this->input->post("length"));
+
+			$data = array();
+
+			$applications = $this->User_Model->getDepartment();
+
+			foreach ($applications as $application) {
+				$record = array();
+				$record[] = $application['did'];
+				$record[] = $application['dname'];
+				$data[] = $record;
+			}
+			$output = array(
+				"draw" => $draw,
+				"recordsTotal" => count($data),
+				"recordsFiltered" => count($data),
+				"data" => $data
+			);
+			echo json_encode($output);
+		}
+	}
+
+	trait test
+	{
+		public function test()
+		{
+			$draw = intval($this->input->post("draw"));
+			$start = intval($this->input->post("start"));
+			$length = intval($this->input->post("length"));
+
+			$departmentId = $this->input->post('did');
+			$classId = $this->input->post('cid');
+			$serviceId = $this->input->post('sid');
+			$fdata = $this->input->post('fd');
+			$tdate = $this->input->post('td');
+
+			$data = array();
+
+			$recordsTotal = count($data);
+			$recordsFiltered = count($data);
+
+			$students = $this->User_Model->getAjaxCall($departmentId, $classId, $serviceId, $fdata, $tdate);
+
+			foreach ($students as $student) {
+				$applications = array();
+				$applications[] = $student->dname;
+				$applications[] = $student->cname;
+				$applications[] = $student->stype;
+				$applications[] = $student->sname;
+				$applications[] = $student->semail;
+
+				$data[] = $applications;
+
+				$output = array(
+					"draw" => $draw,
+					"recordsTotal" => count($data),
+					"recordsFiltered" => count($data),
+					"data" => $data
+				);
+
+				echo json_encode($output);
+			}
 		}
 	}
 }
