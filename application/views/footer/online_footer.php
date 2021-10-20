@@ -37,11 +37,15 @@
 <script src="<?= base_url('assets/js/main.js') ?>"></script>
 <script>
 	$(document).ready(function () {
-		$('#submit').click(function(e) {
+		getAllData();
+		$('#submit').click(function (e) {
 			e.preventDefault();
+
 			let did = $('#did').val();
 			let cid = $('#cid').val();
 			let sid = $('#sid').val();
+			let fDate = $('#fromDate').val();
+			let tDate = $('#toDate').val();
 
 			$('#meraTable').DataTable({
 				"destroy": true,
@@ -52,7 +56,7 @@
 				"ajax": {
 					url: "<?= base_url('online/applicationsGet');?>",
 					type: "POST",
-					data: {did: did, cid: cid, sid: sid}
+					data: {did: did, cid: cid, sid: sid, fDate: fDate, tDate: tDate}
 				},
 				'language': {
 					'emptyTable': 'No found',
@@ -61,6 +65,24 @@
 			});
 		})
 	});
+
+	function getAllData() {
+		$('#meraTable').DataTable({
+			"destroy": true,
+			"processing": true,
+			"dom": 'frtilp',
+			"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+			"scrollX": true,
+			"ajax": {
+				url: "<?= base_url('online/getAllData');?>",
+				type: "POST",
+			},
+			'language': {
+				'emptyTable': 'No found',
+				'processing': '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+			}
+		});
+	}
 </script>
 
 </body>

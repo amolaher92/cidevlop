@@ -12,7 +12,11 @@ if (!class_exists('Application_Model')) {
 
 		public function getAll()
 		{
-			$query = $this->db->get('application');
+			$query = $this->db->select('application.*,department.dname,class.cname,service.stype')
+				->join('department', 'application.did = department.did')
+				->join('class', 'application.cid = class.cid')
+				->join('service', 'application.sid = service.sid');
+			$query = $query->get('application');
 			return $query->result_array();
 		}
 
@@ -30,6 +34,7 @@ if (!class_exists('Application_Model')) {
 			}
 			$query = $query->get('application');
 			return $query->result_array();
+
 		}
 	}
 

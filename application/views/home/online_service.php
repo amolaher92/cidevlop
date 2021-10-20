@@ -1,6 +1,6 @@
 <div class="container mt-5">
 	<form action="" method="POST" enctype="multipart/form-data" class="row">
-		<div class="col-md-4 p-4 border rounded shadow mx-auto" style="background-color:#CFEDFF;">
+		<div class="col-md-3 p-3 border rounded shadow mx-auto" style="background-color:#CFEDFF;">
 			<div class="form-group">
 				<label for="did" class="label">Department</label>
 				<select class="custom-select" name="did" id="did">
@@ -26,9 +26,9 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="formDate">From Date</label>
+				<label for="fromDate">From Date</label>
 				<input type="date"
-					   class="form-control" name="formDate" id="formDate">
+					   class="form-control" name="fromDate" id="fromDate">
 			</div>
 			<div class="form-group">
 				<label for="toDate">To Date</label>
@@ -37,7 +37,8 @@
 			</div>
 			<button type="submit"  id="submit" class="btn btn-primary">View</button>
 		</div>
-		<div class="col-md-6 p-4 border rounded shadow" style="background-color:#CFEDFF;">
+		<div class="col-md-8 p-2 border rounded shadow" style="background-color:#CFEDFF;">
+			<button onclick="refresh();" class="btn btn-primary">Refresh</button>
 			<table class="table" id="meraTable">
 				<thead>
 				<tr>

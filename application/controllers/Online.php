@@ -30,6 +30,42 @@ if (!class_exists('Online')) {
 			$this->load->view('footer/online_footer');
 		}
 
+		public function getAllData()
+		{
+			$draw = intval($this->input->post("draw"));
+			$start = intval($this->input->post("start"));
+			$length = intval($this->input->post("length"));
+
+			$data = array();
+			$i = 1;
+
+			$applications = $this->Application->getAll();
+
+			foreach ($applications as $application) {
+				$record = array();
+
+				$record[] = $i++;
+				$record[] = $application['dname'];
+				$record[] = $application['cname'];
+				$record[] = $application['stype'];
+				$record[] = $application['sname'];
+				$record[] = $application['semail'];
+				$date = new DateTime($application['createdAt']);
+				$record[] = $date->format('d-m-Y');
+
+				$data[] = $record;
+			}
+
+			$output = array(
+				"draw" => $draw,
+				"recordsTotal" => count($data),
+				"recordsFiltered" => count($data),
+				"data" => $data
+			);
+
+			echo json_encode($output);
+
+		}
 		public function applicationsGet()
 		{
 			$draw = intval($this->input->post("draw"));
