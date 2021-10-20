@@ -60,3 +60,5 @@ $route['home/user'] = 'Users/arrayResult';
 $route['home/signup'] = 'Users/userSignup';
 $route['home/test'] = 'Users/userTest';
 $route['home/getuser'] = 'Users/getStudents';
+
+$route['home/online'] = 'Online/index';

@@ -37,34 +37,22 @@
 <script src="<?= base_url('assets/js/main.js') ?>"></script>
 <script>
 	$(document).ready(function () {
-		$('#myTable').DataTable({
-			"destroy": true,
-			"processing": true,
-			"dom": 'frtilp',
-			"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-			"scrollX": true,
-			"ajax": {
-				url: "<?= base_url('users/ajaxStduent');?>",
-				type: "POST"
-			},
-			'language': {
-				'emptyTable': 'No found',
-				'processing': '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
-			}
-		});
-		$('#submit').on('click', function (e) {
-			e.prventDefault();
-			let uid = $('#uid').val();
-			$('#myTable').DataTable({
+		$('#submit').click(function(e) {
+			e.preventDefault();
+			let did = $('#did').val();
+			let cid = $('#cid').val();
+			let sid = $('#sid').val();
+
+			$('#meraTable').DataTable({
 				"destroy": true,
 				"processing": true,
 				"dom": 'frtilp',
 				"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
 				"scrollX": true,
 				"ajax": {
-					url: "<?= base_url('users/ajaxStduent');?>",
+					url: "<?= base_url('online/applicationsGet');?>",
 					type: "POST",
-					data: {uid: uid}
+					data: {did: did, cid: cid, sid: sid}
 				},
 				'language': {
 					'emptyTable': 'No found',

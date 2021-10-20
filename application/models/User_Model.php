@@ -22,6 +22,14 @@ if (!class_exists('User_Model')) {
 			return $query->result_array();
 		}
 
+		public function getSignleDept($id)
+		{
+			$q = $this->db->select('*')
+				->where('did', $id);
+			$q->get('department');
+			return $q->row_array();
+		}
+
 		public function getClasses()
 		{
 			$query = $this->db->get('class');
@@ -53,7 +61,7 @@ if (!class_exists('User_Model')) {
 
 		}
 
-		public function getAjaxCall($departmentId,$classId,$serviceId,$fdata,$tdate)
+		public function getAjaxCall($departmentId, $classId, $serviceId, $fdata, $tdate)
 		{
 			$filter = array('createdAt >=' => $fdata, 'createdAt <=' => $tdate);
 			$this->db->select('*');
