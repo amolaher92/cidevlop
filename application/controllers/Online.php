@@ -136,9 +136,16 @@ if (!class_exists('Online')) {
 				//set error message if validation_array false
 				$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
-				if ($this->form_validation->run() !== FALSE) {
+				//get captcha
+				$inputCaptcha = $this->input->post('captcha');
+				$sessCaptcha = $this->session->userdata('captchaCode');
+				$isValidCaptcha = $inputCaptcha === $sessCaptcha;
+
+				if ($this->form_validation->run() !== FALSE && $isValidCaptcha) {
 					$userData = $this->input->post();
-					if ($this->Application->insertUser($userData) === TRUE) {
+					unset($userData['captcha']);
+
+					if ($this->Application->insertUser($userData) == TRUE) {
 
 						$success = '<div class="alert alert-success alert-dismissible">
 										<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -158,6 +165,13 @@ if (!class_exists('Online')) {
 					}
 				} else {
 
+				}
+				if (!$isValidCaptcha) {
+					$message = '<div class="alert alert-danger alert-dismissible">
+									<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+									<strong>Failed!</strong> Captcha does not match, please try again.
+								</div> ';
+					$this->session->set_flashdata('msg', $message);
 				}
 
 			}
