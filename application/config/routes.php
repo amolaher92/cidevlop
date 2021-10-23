@@ -62,3 +62,5 @@ $route['home/test'] = 'Users/userTest';
 $route['home/getuser'] = 'Users/getStudents';
 
 $route['home/online'] = 'Online/index';
+$route['home/register'] = 'Online/register';
+$route['online/refresh-captcha'] = 'Online/refreshCaptcha';

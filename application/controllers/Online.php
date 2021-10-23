@@ -7,6 +7,13 @@ if (!class_exists('Online')) {
 		public function __construct()
 		{
 			parent::__construct();
+
+			$this->load->library('form_validation');
+			$this->load->library('email');
+			$this->load->helper('email');
+			$this->load->helper('captcha');
+			$this->load->helper('form');
+
 			$this->load->model('Dept_Model', 'Dept');
 			$this->load->model('Class_Model', 'Class');
 			$this->load->model('Service_Model', 'Service');
@@ -66,6 +73,7 @@ if (!class_exists('Online')) {
 			echo json_encode($output);
 
 		}
+
 		public function applicationsGet()
 		{
 			$draw = intval($this->input->post("draw"));
@@ -109,5 +117,91 @@ if (!class_exists('Online')) {
 
 		}
 
+		public function register()
+		{
+			if ($this->input->method() === 'post') {
+
+				$this->form_validation->set_rules('firstName', 'firstName', 'required|alpha|min_length[5]');
+				$this->form_validation->set_rules('middleName', 'middleName', 'required|alpha|min_length[5]');
+				$this->form_validation->set_rules('lastName', 'lastName', 'required|alpha|min_length[5]');
+				$this->form_validation->set_rules('mobile', 'mobile', 'required|integer|exact_length[10]');
+				$this->form_validation->set_rules('email', 'email', 'required|valid_email');
+
+				$this->form_validation->set_message('required', '{field} must have.');
+				$this->form_validation->set_message('min_length', '{field} must have at least {param} characters.');
+				$this->form_validation->set_message('alpha', '{field} must have characters.');
+				$this->form_validation->set_message('integer', '{field} must have numbers.');
+				$this->form_validation->set_message('valid_email', '{field} must have valid address.');
+
+				//set error message if validation_array false
+				$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+
+				if ($this->form_validation->run() !== FALSE) {
+					$userData = $this->input->post();
+					if ($this->Application->insertUser($userData) === TRUE) {
+
+						$success = '<div class="alert alert-success alert-dismissible">
+										<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+										<strong>Successfully</strong> submitted your application.
+									</div>';
+						$this->session->set_flashdata('msg', $success);
+
+						return redirect('home/register');
+					} else {
+						$failure = '<div class="alert alert-danger alert-dismissible">
+										<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+										<strong>Failed!</strong> to submting to your application please try again.
+									</div> ';
+						$this->session->set_flashdata('msg', $failure);
+
+						return redirect('home/register');
+					}
+				} else {
+
+				}
+
+			}
+
+			$captcha = createCaptcha();
+			// Unset previous captcha and set new captcha word
+			$this->session->unset_userdata('captchaCode');
+			$this->session->set_userdata('captchaCode', $captcha['word']);
+
+			$data['captchaImg'] = $captcha['image'];
+
+			$this->load->view('header/header');
+			$this->load->view('home/online_register', $data);
+			$this->load->view('footer/footer');
+		}
+
+		public function onlineFeedback()
+		{
+			$data = array();
+			$feedbackTypes = $this->feedbackModel->getFeedbackTypes($this->feedbackModel::FEEDBACK_CATEGORIES['general']);
+			$data['feedbackTypes'] = $feedbackTypes;
+
+			$captcha = createCaptcha();
+
+			// Unset previous captcha and set new captcha word
+			$this->session->unset_userdata('captchaCode');
+			$this->session->set_userdata('captchaCode', $captcha['word']);
+
+			// Pass captcha image to view
+			$data['captchaImg'] = $captcha['image'];
+
+			$this->load->view('header/header');
+			$this->load->view('about/governance/online_feedback', $data);
+			$this->load->view('footer/feedback_footer');
+		}
+
+		/**
+		 * Captcha Referesh function
+		 */
+		public function refreshCaptcha()
+		{
+			$captcha = refreshCaptcha();
+			echo $captcha['image'];
+		}
 	}
 }
+
