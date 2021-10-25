@@ -147,7 +147,7 @@ if (!class_exists('Online')) {
 
 					if ($this->Application->insertUser($userData) == TRUE) {
 
-						$success = '<div class="alert alert-success alert-dismissible">
+						$success = '<div class="alert alert-success alert-dismissible" role="alert">
 										<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 										<strong>Successfully</strong> submitted your application.
 									</div>';
@@ -155,7 +155,7 @@ if (!class_exists('Online')) {
 
 						return redirect('home/register');
 					} else {
-						$failure = '<div class="alert alert-danger alert-dismissible">
+						$failure = '<div class="alert alert-danger alert-dismissible" role="alert">
 										<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 										<strong>Failed!</strong> to submting to your application please try again.
 									</div> ';

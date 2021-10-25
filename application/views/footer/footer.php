@@ -9,6 +9,7 @@
 
 <!--Bootstrap v4.6-->
 <script src="<?= base_url('assets/lib/js/bootstrap.min.js'); ?>"></script>
+<script src="<?= base_url('assets/js/bootstrap.js'); ?>"></script>
 
 <!--jQuery UI-->
 <script src="<?= base_url('assets/lib/js/jquery-ui.min.js') ?>"></script>
@@ -41,6 +42,9 @@
 			$.get('<?php print base_url().'online/refresh-captcha'; ?>', function(data) {
 				$('p#captcha-img').html(data);
 			});
+		});
+		$(".alert").delay(4000).slideUp(200, function () {
+			$(this).alert('close');
 		});
 	});
 </script>
