@@ -36,6 +36,11 @@ if (!class_exists('Application_Model')) {
 			return $query->result_array();
 
 		}
+
+		public function insertUser($application)
+		{
+			return $this->db->insert('test',$application);
+		}
 	}
 
 }

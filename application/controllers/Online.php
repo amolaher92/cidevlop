@@ -121,14 +121,13 @@ if (!class_exists('Online')) {
 		{
 			if ($this->input->method() === 'post') {
 
-				$this->form_validation->set_rules('firstName', 'firstName', 'required|alpha|min_length[5]');
-				$this->form_validation->set_rules('middleName', 'middleName', 'required|alpha|min_length[5]');
-				$this->form_validation->set_rules('lastName', 'lastName', 'required|alpha|min_length[5]');
+				$this->form_validation->set_rules('firstName', 'firstName', 'required|alpha');
+				$this->form_validation->set_rules('middleName', 'middleName', 'required|alpha');
+				$this->form_validation->set_rules('lastName', 'lastName', 'required|alpha');
 				$this->form_validation->set_rules('mobile', 'mobile', 'required|integer|exact_length[10]');
 				$this->form_validation->set_rules('email', 'email', 'required|valid_email');
 
 				$this->form_validation->set_message('required', '{field} must have.');
-				$this->form_validation->set_message('min_length', '{field} must have at least {param} characters.');
 				$this->form_validation->set_message('alpha', '{field} must have characters.');
 				$this->form_validation->set_message('integer', '{field} must have numbers.');
 				$this->form_validation->set_message('valid_email', '{field} must have valid address.');
@@ -142,6 +141,7 @@ if (!class_exists('Online')) {
 				$isValidCaptcha = $inputCaptcha === $sessCaptcha;
 
 				if ($this->form_validation->run() !== FALSE && $isValidCaptcha) {
+
 					$userData = $this->input->post();
 					unset($userData['captcha']);
 
@@ -163,8 +163,6 @@ if (!class_exists('Online')) {
 
 						return redirect('home/register');
 					}
-				} else {
-
 				}
 				if (!$isValidCaptcha) {
 					$message = '<div class="alert alert-danger alert-dismissible">
