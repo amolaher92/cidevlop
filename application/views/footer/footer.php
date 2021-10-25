@@ -46,6 +46,21 @@
 		$(".alert").delay(4000).slideUp(200, function () {
 			$(this).alert('close');
 		});
+		$('#userTable').DataTable({
+			"destroy": true,
+			"processing": true,
+			"dom": 'frtilp',
+			"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+			"scrollX": true,
+			"ajax": {
+				url: "<?= base_url('online/getAllUsers');?>",
+				type: "POST",
+			},
+			'language': {
+				'emptyTable': 'No found',
+				'processing': '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
+			}
+		});
 	});
 </script>
 

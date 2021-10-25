@@ -165,7 +165,7 @@ if (!class_exists('Online')) {
 					}
 				}
 				if (!$isValidCaptcha) {
-					$message = '<div class="alert alert-danger alert-dismissible">
+					$message = '<div class="alert alert-danger alert-dismissible" role="alert">
 									<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 									<strong>Failed!</strong> Captcha does not match, please try again.
 								</div> ';
@@ -213,6 +213,40 @@ if (!class_exists('Online')) {
 		{
 			$captcha = refreshCaptcha();
 			echo $captcha['image'];
+		}
+		public function getAllUsers()
+		{
+			$draw = intval($this->input->post("draw"));
+			$start = intval($this->input->post("start"));
+			$length = intval($this->input->post("length"));
+
+			$data = array();
+
+			$applications = $this->Application->getAllUser();
+
+			foreach ($applications as $application) {
+				$record = array();
+
+				$record[] = $application['id'];
+				$record[] = $application['firstName'];
+				$record[] = $application['middleName'];
+				$record[] = $application['lastName'];
+				$record[] = $application['mobile'];
+				$record[] = $application['email'];
+				$date = new DateTime($application['createdAt']);
+				$record[] = $date->format('d-m-Y');
+
+				$data[] = $record;
+			}
+
+			$output = array(
+				"draw" => $draw,
+				"recordsTotal" => count($data),
+				"recordsFiltered" => count($data),
+				"data" => $data
+			);
+
+			echo json_encode($output);
 		}
 	}
 }

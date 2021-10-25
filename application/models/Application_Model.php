@@ -41,6 +41,10 @@ if (!class_exists('Application_Model')) {
 		{
 			return $this->db->insert('test',$application);
 		}
+		public function getAllUser()
+		{
+			return $this->db->get('test')->result_array();
+		}
 	}
 
 }
