@@ -70,20 +70,22 @@
 	</div>
 	</form>
 </div>
-<div class="container mt-5">
-<div class="row">
-	<table class="table table-striped table-bordered" id="userTable">
-		<thead class="thead-dark">
-		<tr>
-			<th>id</th>
-			<th>First Name</th>
-			<th>Middle Name</th>
-			<th>Last Name</th>
-			<th>Mobile</th>
-			<th>Email</th>
-			<th>DOP</th>
-		</tr>
-		</thead>
-	</table>
-</div>
+<div class="container my-5">
+	<div class="row">
+		<div class="col-md-12 border rounded shadow">
+			<table class="table table-striped table-bordered" id="userTable">
+				<thead class="thead-dark">
+				<tr>
+					<th>id</th>
+					<th>First Name</th>
+					<th>Middle Name</th>
+					<th>Last Name</th>
+					<th>Mobile</th>
+					<th>Email</th>
+					<th>DOP</th>
+				</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
 </div>

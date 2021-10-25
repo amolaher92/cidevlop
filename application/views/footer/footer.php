@@ -38,8 +38,8 @@
 <script src="<?= base_url('assets/js/main.js') ?>"></script>
 <script>
 	$(document).ready(function () {
-		$('a.refresh-captcha').on('click', function(){
-			$.get('<?php print base_url().'online/refresh-captcha'; ?>', function(data) {
+		$('a.refresh-captcha').on('click', function () {
+			$.get('<?php print base_url() . 'online/refresh-captcha'; ?>', function (data) {
 				$('p#captcha-img').html(data);
 			});
 		});
@@ -52,11 +52,13 @@
 			"dom": 'frtilp',
 			"lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
 			"scrollX": true,
+			"search": true,
+			"autoWidth": false,
 			"ajax": {
 				url: "<?= base_url('online/getAllUsers');?>",
-				type: "POST",
+				type: "POST"
 			},
-			'language': {
+			"language": {
 				'emptyTable': 'No found',
 				'processing': '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>'
 			}
